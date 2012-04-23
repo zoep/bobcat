@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+   Copyright 1999-2004 The Apache Software Foundation
+ -->
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+    "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+
+<!-- web-app element was originally found empty - the following are additions 
+      for the demonstration of HTTPGetServlet -->
+<web-app>
+  <servlet> <!-- the following name will refer to the sepecified class -->
+     <servlet-name>Hipster</servlet-name>
+     <servlet-class>RegistrationServlet</servlet-class>
+  </servlet>   
+  <servlet> <!-- the following name will refer to the sepecified class -->
+     <servlet-name>Hipsteras</servlet-name>
+     <servlet-class>BookServlet</servlet-class>
+  </servlet>   
+ 
+   <servlet-mapping><!-- the following (same) name will called as the specified url patttern
+                                    so hitting http://localhost:8080/myExamplesDir/firstServletDemo/* (any thing) 
+                                    will lead  to HTTPGetServlet    -->
+     <servlet-name>Hipster</servlet-name>
+     <url-pattern>/Hipster/*</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping><!-- the following (same) name will called as the specified url patttern
+                                    so hitting http://localhost:8080/myExamplesDir/firstServletDemo/* (any thing) 
+                                    will lead  to HTTPGetServlet    -->
+     <servlet-name>Hipsteras</servlet-name>
+     <url-pattern>/Hipsteras/*</url-pattern>
+   </servlet-mapping>
+</web-app>
