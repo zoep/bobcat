@@ -6,6 +6,13 @@
 
 		<h1>Please enter your name and option </h1>
 
+		<% if ( request.getParameter("error")!=null ) { 
+
+		%> <p> All the fields is required to submit this form. </p> <%
+
+		} %>
+		
+		
 		<form action="http://localhost:8080/bobcat/Hipster" method="post">
 			<table>
 				<tr>

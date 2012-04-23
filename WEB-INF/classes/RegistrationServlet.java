@@ -9,6 +9,7 @@ public class RegistrationServlet extends HttpServlet {
 						HttpServletResponse response )
 		throws ServletException, IOException {
 		PrintWriter output;
+		  
 		String fname = request.getParameter( "fname" );
 		String sname = request.getParameter( "sname" );
 		String option = request.getParameter( "option" );
@@ -16,32 +17,39 @@ public class RegistrationServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		
-		
-		session.setAttribute( "fname", fname );
-		session.setAttribute( "sname", sname );
-      
- 		response.setContentType( "text/html" );
-      
+		if ( fname.length() == 0 || sname.length() == 0 || option.length() == 0 ) {
 
-	  	if ( option.equals("books") ) {
-		
-			address="WEB-INF/books.jsp";
-		
+			response.sendRedirect("http://localhost:8080/bobcat/?error=1");
+
 		}
-		
-		else {
+
+		else { 
+			session.setAttribute( "fname", fname );
+			session.setAttribute( "sname", sname );
+		  
+			response.setContentType( "text/html" );
+		  
+
+			if ( option.equals("books") ) {
 			
-			address="WEB-INF/records.jsp";
+				address="WEB-INF/books.jsp";
 			
+			}
+			
+			else {
+				
+				address="WEB-INF/records.jsp";
+				
+			}
+			/*
+				output = response.getWriter();
+				output.println("<html><body>");
+			output.println("<p>name:"+fname);
+			output.println("</body></html>");
+			*/
+			RequestDispatcher dispatcher =
+			request.getRequestDispatcher(address);
+			dispatcher.forward(request, response);
 		}
-/*
-		output = response.getWriter();
-		output.println("<html><body>");
-		output.println("<p>name:"+fname);
-		output.println("</body></html>");
-*/
-		RequestDispatcher dispatcher =
-	  	request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
-   }
+	}
 }
