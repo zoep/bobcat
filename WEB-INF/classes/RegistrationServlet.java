@@ -17,7 +17,7 @@ public class RegistrationServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		
-		if ( fname.length() == 0 || sname.length() == 0 || option.length() == 0 ) {
+		if ( fname.length() == 0 || sname.length() == 0 || option == null ) {
 
 			response.sendRedirect("http://localhost:8080/bobcat/?error=1");
 

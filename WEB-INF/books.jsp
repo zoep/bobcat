@@ -3,7 +3,6 @@
 		<p> name:<%=session.getAttribute("fname")%></p>
 		<p> surname:<%=session.getAttribute("sname")%></p> 
 		
-		
 		<form action="http://localhost:8080/bobcat/confirm.jsp" method="post">
 				<input type="checkbox" name="book" value="low" />Xamiles Ptiseis<br />
 				<input type="checkbox" name="book" value="kastrato" /> Kastrato<br /> 
@@ -16,4 +15,3 @@
 		</form>
 	</body>
 </html>
-
