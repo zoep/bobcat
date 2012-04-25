@@ -57,9 +57,14 @@ public class RegistrationServlet extends HttpServlet {
 		throws ServletException, IOException {
 
 
-			HttpSession session = request.getSession(true);
+			HttpSession session = request.getSession(false);
 			String address;
-			if ( ( session.getAttribute("fname")==null ) || ( session.getAttribute("sname")==null ) ){
+			
+			if ( session == null ){
+
+				response.sendRedirect("http://localhost:8080/bobcat/");
+			}
+			else if ( ( session.getAttribute("fname")==null ) || ( session.getAttribute("sname")==null ) ){
 
 				response.sendRedirect("http://localhost:8080/bobcat/");
 			}

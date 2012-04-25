@@ -13,7 +13,7 @@ public class BookServlet extends HttpServlet {
 		PrintWriter output;
 		String address;
 
-		//HttpSession session  = request.getSession(false);
+		HttpSession session  = request.getSession(false);
 		
 		// output = response.getWriter();
 		// output.println("<html><body>");
@@ -54,6 +54,15 @@ public class BookServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			
 				session.invalidate();
+				
+				Cookie killMyCookie[] = request.getCookies();
+				
+				for ( int i=0 ; i < killMyCookie.length ; i++){
+
+					killMyCookie[i].setMaxAge(0);
+					response.addCookie(killMyCookie[i]);
+				}
+				
 			}
 
 			if ( request.getParameter("reset")!=null ){
