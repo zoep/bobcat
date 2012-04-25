@@ -57,7 +57,7 @@ public class RegistrationServlet extends HttpServlet {
 		throws ServletException, IOException {
 
 
-			HttpSession session = request.getSession(false);
+			HttpSession session = request.getSession(true);
 			String address;
 			if ( ( session.getAttribute("fname")==null ) || ( session.getAttribute("sname")==null ) ){
 
