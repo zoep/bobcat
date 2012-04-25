@@ -18,6 +18,7 @@ public class BookServlet extends HttpServlet {
 		// output = response.getWriter();
 		// output.println("<html><body>");
 		String books[] = request.getParameterValues("books"); 
+		String qt[] = request.getParameterValues("qt"); 
 		
 		if (books != null && books.length != 0) {
 			for (int i = 0; i < books.length; i++) {
@@ -25,6 +26,10 @@ public class BookServlet extends HttpServlet {
 				//output.println("<p>"+books[i]+"</p>");
 				}
 		}
+        else {
+			response.sendRedirect("http://localhost:8080/bobcat/");
+        }
+
 		
 		// output.println("</body></html>");
 /*

@@ -25,7 +25,12 @@ else {
 				%>
 					<table>
 						<tr>
-							<td> <input type="submit" value="Submit" /> <input type="reset"> </td>
+                            <td>    
+                                <input type="submit" value="Confirm" /> 
+                                <form>
+                                    <input TYPE="button" value="Reject" onClick="parent.location='http://localhost:8080/bobcat'">
+                                </form>
+                            </td>
 						</tr>
 					</table>
 				</form>
