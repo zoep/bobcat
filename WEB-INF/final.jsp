@@ -3,15 +3,19 @@
 	<body>
 		<p> name:<%=session.getAttribute("fname")%></p>
 		<p> surname:<%=session.getAttribute("sname")%></p> 
-		<h1> Selection </h1>
-
-		<% 
-		for (int i=0; i< names.length; i++) {
-			if (session.getAttribute(names[i])!=null){ %>
-			<p> book: <%= names[i] %> count: <%= session.getAttribute(names[i]) %> </p> <%
+		<h1> Your order has been placed. </h1>
+		<table>
+		<%
+			Cookie cookies[] = request.getCookies();
+			if ( cookies.length > 1 ) { 
+					for( int i = 0 ; i < ( cookies.length - 1 ) ; i++ ) { %>
+						<tr>
+							<td>Book:<%=cookies[i].getName()%></td> <td>Quantity:<%=cookies[i].getValue()%></td>
+						</tr>
+				<% }
 			}
-		}
 		%>
+		</table>
 	</body>
 </html>
 

@@ -13,58 +13,65 @@ public class BookServlet extends HttpServlet {
 		PrintWriter output;
 		String address;
 
-		HttpSession session  = request.getSession(false);
+		//HttpSession session  = request.getSession(false);
 		
 		// output = response.getWriter();
 		// output.println("<html><body>");
-		String books[] = request.getParameterValues("books"); 
-		String qt[] = request.getParameterValues("qt"); 
+		String books = request.getParameter("book"); 
+		String qt = request.getParameter("qt"); 
 		
-		if (books != null && books.length != 0) {
-			for (int i = 0; i < books.length; i++) {
-				session.setAttribute(books[i], 1);
-				//output.println("<p>"+books[i]+"</p>");
-				}
+		
+		if ( ( books != null )  && ( qt != null ) ) {
+			Cookie cbook = new Cookie(books, qt);
+			cbook.setMaxAge(300);
+			response.addCookie(cbook);
+	
+			response.sendRedirect("http://localhost:8080/bobcat/Hipster");
+					
 		}
-        else {
-			response.sendRedirect("http://localhost:8080/bobcat/");
-        }
-
-		
-		// output.println("</body></html>");
-/*
-		output.println("<form action="http://localhost:8080/exercise1/Hipsterreads" method="get">")
-		output.println("<table><tr><td>")
-		output.println("<input type="submit" value="Submit" /> <input type="reset">") 
-		output.println("</td></tr></table>");
-		session.setAttribute( "fname", fname );
-		session.setAttribute( "sname", sname );
-      
- 		response.setContentType( "text/html" );
-      
-
-	  	if ( option.equals("books") ) {
-		
-			address="WEB-INF/books.jsp";
-		
-		}
-		
 		else {
-			
-			address="WEB-INF/records.jsp";
-			
-		}
-/*
-		output = response.getWriter();
-		output.println("<html><body>");
-		output.println("<p>name:"+fname);
-		output.println("</body></html>");
-*/
-		
-		address="WEB-INF/final.jsp";
-		RequestDispatcher dispatcher =
-	  	request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
-		session.invalidate();	
+			response.sendRedirect("http://localhost:8080/bobcat/Hipster");
+        }
    }
+
+   	public void doGet( HttpServletRequest request,
+						HttpServletResponse response )
+		throws ServletException, IOException {
+
+
+			HttpSession session = request.getSession(false);
+			String address;
+			if ( ( session.getAttribute("fname")==null ) || ( session.getAttribute("sname")==null ) ){
+
+				response.sendRedirect("http://localhost:8080/bobcat/");
+			}
+			else {
+				
+			if ( request.getParameter("accept")!=null ){
+				address ="/WEB-INF/final.jsp";
+				RequestDispatcher dispatcher =
+				request.getRequestDispatcher(address);
+				dispatcher.forward(request, response);
+			}
+
+			if ( request.getParameter("reset")!=null ){
+				
+				for ( int i=0 ; i < 3 ; i++){
+
+					Cookie killMyCookie = request.getCookies()[i];
+					killMyCookie.setMaxAge(0);
+					response.addCookie(killMyCookie);
+				}
+			
+				response.sendRedirect("http://localhost:8080/bobcat/Hipster");
+			
+			}
+
+				
+
+			}
+	
+	}
+
+
 }

@@ -32,13 +32,12 @@ public class RegistrationServlet extends HttpServlet {
 
 			if ( option.equals("books") ) {
 			
-				address="WEB-INF/books.jsp";
-			
+				address="/WEB-INF/books.jsp";
 			}
-			
+
 			else {
 				
-				address="WEB-INF/records.jsp";
+				address="/WEB-INF/records.jsp";
 				
 			}
 			/*
@@ -51,5 +50,27 @@ public class RegistrationServlet extends HttpServlet {
 			request.getRequestDispatcher(address);
 			dispatcher.forward(request, response);
 		}
+	}
+
+	public void doGet( HttpServletRequest request,
+						HttpServletResponse response )
+		throws ServletException, IOException {
+
+
+			HttpSession session = request.getSession(false);
+			String address;
+			if ( ( session.getAttribute("fname")==null ) || ( session.getAttribute("sname")==null ) ){
+
+				response.sendRedirect("http://localhost:8080/bobcat/");
+			}
+			else {
+
+				address="/WEB-INF/books.jsp";
+				RequestDispatcher dispatcher =
+					request.getRequestDispatcher(address);
+				dispatcher.forward(request, response);
+
+			}
+	
 	}
 }
