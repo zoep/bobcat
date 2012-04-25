@@ -52,15 +52,18 @@ public class BookServlet extends HttpServlet {
 				RequestDispatcher dispatcher =
 				request.getRequestDispatcher(address);
 				dispatcher.forward(request, response);
+			
+				session.invalidate();
 			}
 
 			if ( request.getParameter("reset")!=null ){
 				
-				for ( int i=0 ; i < 3 ; i++){
+				Cookie killMyCookie[] = request.getCookies();
+				
+				for ( int i=0 ; i < ( killMyCookie.length - 1 ) ; i++){
 
-					Cookie killMyCookie = request.getCookies()[i];
-					killMyCookie.setMaxAge(0);
-					response.addCookie(killMyCookie);
+					killMyCookie[i].setMaxAge(0);
+					response.addCookie(killMyCookie[i]);
 				}
 			
 				response.sendRedirect("http://localhost:8080/bobcat/Hipster");
