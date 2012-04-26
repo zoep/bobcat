@@ -1,0 +1,43 @@
+div.custom {
+    height: 30px;
+    background-color: #343858;
+    color: white;
+    top: 0px;
+    margin-top: 3px;
+    text-align: center;
+    line-height: 2;
+    font-weight: bold;
+}
+p.error {
+    color: red;
+    font-style: italic;
+}
+p.cart {
+    color: #FF4100;
+    font-style: bold;
+}
+
+table {
+    border-width:2px;
+    border-style:solid;
+    border-color:black;
+    text-align: left;
+    }
+table.cart{
+    margin-top:20px;
+}
+
+
+table.prod{
+    margin-top:20px;
+}
+
+table.lala {
+    border-style:none;
+}
+table.lala th {
+    color:#FF4100;
+    border-style:none;
+    font-size:16pt;
+}
+
