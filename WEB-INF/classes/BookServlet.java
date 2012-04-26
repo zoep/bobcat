@@ -69,10 +69,11 @@ public class BookServlet extends HttpServlet {
 				
 				Cookie killMyCookie[] = request.getCookies();
 				
-				for ( int i=0 ; i < ( killMyCookie.length - 1 ) ; i++){
-
-					killMyCookie[i].setMaxAge(0);
-					response.addCookie(killMyCookie[i]);
+				for ( int i=0 ; i < ( killMyCookie.length ) ; i++){
+					if ( killMyCookie[i].getName().equals("1") || killMyCookie[i].getName().equals("2") || killMyCookie[i].getName().equals("3") ){
+						killMyCookie[i].setMaxAge(0);
+						response.addCookie(killMyCookie[i]);
+					}
 				}
 			
 				response.sendRedirect("http://localhost:8080/bobcat/Hipster");
