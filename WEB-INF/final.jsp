@@ -1,12 +1,12 @@
 <%! private String names[] = {"low", "kastrato", "lion"}; %>
-<html>
-	<body>
-		<p> name:<%=session.getAttribute("fname")%></p>
-		<p> surname:<%=session.getAttribute("sname")%></p> 
+    <jsp:include page="header.jsp" />
+        <div class="custom">
+            <%=session.getAttribute("fname")%> <%=session.getAttribute("sname")%> 
+        </div>
 		<h1> Your order has been placed. </h1>
 		<table>
 			<tr>
-				<td>Book</td> <td>Quantity</td>
+				<th>Book</th> <th>Quantity</th>
 			</tr>
 		<%
 			Cookie cookies[] = request.getCookies();
@@ -50,6 +50,5 @@
 			<% }
 			%>
 		</table>
-	</body>
-</html>
+    <jsp:include page="footer.jsp" />
 

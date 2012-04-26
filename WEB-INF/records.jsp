@@ -1,14 +1,15 @@
-<html>
-	<body>
-		<p> Firstname:<%=session.getAttribute("fname")%></p>
-		<p> Lastname:<%=session.getAttribute("sname")%></p> 
-		
-
-		<table>
+<jsp:include page="header.jsp" />
+<div class="custom">
+    <p><%=session.getAttribute("fname")%> <%=session.getAttribute("sname")%></p> 
+</div>
+		<table class="prod">
 			<tr>
+                <th>Record</th>
+                <th>Quantity</th>
+            </tr>
+            <tr>
 				<form action="http://localhost:8080/bobcat/Hipsteras" method="post">
 				<td><input type="hidden" name="book" value="4" />The Piper at the Gates of Dawn, Pink Floyd</td>
-				<td>Quantity</td>
 				<td><input type="text" name="qt"></td>
 				<td> <input type="submit" value="Add to Cart" /> </td>
 				</form>
@@ -16,7 +17,6 @@
 			<tr>
 				<form action="http://localhost:8080/bobcat/Hipsteras" method="post">
 				<td><input type="hidden" name="book" value="5" />Lightbulb Sun, Porcupine Tree</td>
-				<td>Quantity</td>
 				<td><input type="text" name="qt"></td>
 				<td> <input type="submit" value="Add to Cart" /> </td>
 				</form>
@@ -24,22 +24,25 @@
 			<tr>
 				<form action="http://localhost:8080/bobcat/Hipsteras" method="post">
 				<td><input type="hidden" name="book" value="6" />Banana, The Velvet Underground</td>
-				<td>Quantity</td>
 				<td><input type="text" name="qt"></td>
 				<td> <input type="submit" value="Add to Cart" /> </td>
 				</form>
 			</tr>
 		</table>
-		<table>
+		<table class="cart">
+        </tr>
+        <td>
+            <table class="lala">
+                <th>Shopping Cart</th>
+            </table>
+        </td>
+        </tr>
 			<%
 				Cookie cookies[];
 				cookies = request.getCookies();
 				if ( cookies.length > 1 ) { %>
-					<tr> 
-						<th>Shopping Cart </th><td></td>
-					</tr>
 					<tr>
-						<td>Record</td> <td>Quantity</td>
+						<th>Record</th> <th>Quantity</th>
 					</tr> <%
 					for( int i = 0 ; i < ( cookies.length ) ; i++ ) {
 						String name = cookies[i].getName();
@@ -76,5 +79,4 @@
 				</tr>
 		</table>
 
-	</body>
-</html>
+<jsp:include page="footer.jsp" />

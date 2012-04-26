@@ -53,7 +53,8 @@ public class BookServlet extends HttpServlet {
 				
 					
 					Cookie killMyCookie[] = request.getCookies();
-					
+				
+
 					for ( int i=0 ; i < ( killMyCookie.length ) ; i++){
 						if ( killMyCookie[i].getName().equals("1") || killMyCookie[i].getName().equals("2") || killMyCookie[i].getName().equals("3") || killMyCookie[i].getName().equals("4") || killMyCookie[i].getName().equals("5") || killMyCookie[i].getName().equals("6") ){
 							killMyCookie[i].setMaxAge(0);

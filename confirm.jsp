@@ -10,9 +10,9 @@ else {
 	else { %>
 		<html>
 			<body>
-				<p> name:<%=session.getAttribute("fname")%></p>
-				<p> surname:<%=session.getAttribute("sname")%></p>
-				<h1>You have selected:</h1>
+            <div class="custom">
+                <%=session.getAttribute("fname")%> <%=session.getAttribute("sname")%>p> 
+            </div>
 
 				<form action="http://localhost:8080/bobcat/Hipsteras" method="post">
 				<%

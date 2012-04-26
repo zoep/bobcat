@@ -18,6 +18,10 @@
      <servlet-name>Hipsteras</servlet-name>
      <servlet-class>BookServlet</servlet-class>
   </servlet>   
+  <servlet> <!-- the following name will refer to the sepecified class -->
+     <servlet-name>Hipsterou</servlet-name>
+     <servlet-class>RecordServlet</servlet-class>
+  </servlet>   
  
    <servlet-mapping><!-- the following (same) name will called as the specified url patttern
                                     so hitting http://localhost:8080/myExamplesDir/firstServletDemo/* (any thing) 
@@ -30,5 +34,11 @@
                                     will lead  to HTTPGetServlet    -->
      <servlet-name>Hipsteras</servlet-name>
      <url-pattern>/Hipsteras/*</url-pattern>
+   <servlet-mapping><!-- the following (same) name will called as the specified url patttern
+                                    so hitting http://localhost:8080/myExamplesDir/firstServletDemo/* (any thing) 
+                                    will lead  to HTTPGetServlet    -->
+     <servlet-name>Hipsterou</servlet-name>
+     <url-pattern>/Hipsterou/*</url-pattern>
+   </servlet-mapping>
    </servlet-mapping>
 </web-app>
