@@ -45,38 +45,41 @@ public class BookServlet extends HttpServlet {
 			}
 			else {
 				
-			if ( request.getParameter("accept")!=null ){
-				address ="/WEB-INF/final.jsp";
-				RequestDispatcher dispatcher =
-				request.getRequestDispatcher(address);
-				dispatcher.forward(request, response);
-			
-				session.invalidate();
+				if ( request.getParameter("accept")!=null ){
+					address ="/WEB-INF/final.jsp";
+						RequestDispatcher dispatcher =
+					request.getRequestDispatcher(address);
+					dispatcher.forward(request, response);
 				
-				Cookie killMyCookie[] = request.getCookies();
-				
-				for ( int i=0 ; i < killMyCookie.length ; i++){
-
-					killMyCookie[i].setMaxAge(0);
-					response.addCookie(killMyCookie[i]);
-				}
-				
-			}
-
-			if ( request.getParameter("reset")!=null ){
-				
-				Cookie killMyCookie[] = request.getCookies();
-				
-				for ( int i=0 ; i < ( killMyCookie.length ) ; i++){
-					if ( killMyCookie[i].getName().equals("1") || killMyCookie[i].getName().equals("2") || killMyCookie[i].getName().equals("3") || killMyCookie[i].getName().equals("4") || killMyCookie[i].getName().equals("5") || killMyCookie[i].getName().equals("6") ){
-						killMyCookie[i].setMaxAge(0);
-						response.addCookie(killMyCookie[i]);
+					
+					Cookie killMyCookie[] = request.getCookies();
+					
+					for ( int i=0 ; i < ( killMyCookie.length ) ; i++){
+						if ( killMyCookie[i].getName().equals("1") || killMyCookie[i].getName().equals("2") || killMyCookie[i].getName().equals("3") || killMyCookie[i].getName().equals("4") || killMyCookie[i].getName().equals("5") || killMyCookie[i].getName().equals("6") ){
+							killMyCookie[i].setMaxAge(0);
+							response.addCookie(killMyCookie[i]);
+						}
 					}
+					
+					session.invalidate();
 				}
+				
 			
-				response.sendRedirect("http://localhost:8080/bobcat/Hipster");
+
+				if ( request.getParameter("reset")!=null ){
+				
+					Cookie killMyCookie[] = request.getCookies();
+				
+					for ( int i=0 ; i < ( killMyCookie.length ) ; i++){
+						if ( killMyCookie[i].getName().equals("1") || killMyCookie[i].getName().equals("2") || killMyCookie[i].getName().equals("3") || killMyCookie[i].getName().equals("4") || killMyCookie[i].getName().equals("5") || killMyCookie[i].getName().equals("6") ){
+							killMyCookie[i].setMaxAge(0);
+							response.addCookie(killMyCookie[i]);
+						}
+					}
 			
-			}
+					response.sendRedirect("http://localhost:8080/bobcat/Hipster");
+			
+				}
 
 				
 

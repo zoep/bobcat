@@ -35,9 +35,9 @@
 				Cookie cookies[];
 				cookies = request.getCookies();
 				if ( cookies.length > 1 ) { %>
-					<th> 
-						<td> You have selected: </td><td></td>
-					</th>
+					<tr> 
+						<th>Shopping Cart</th><td></td>
+					</tr>
 					<tr>
 						<td>Book</td> <td>Quantity</td>
 					</tr> <%

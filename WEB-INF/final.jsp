@@ -33,7 +33,7 @@
 							<td>The Piper at the Gates of Dawn, Pink Floyd</td> <td><%=cookies[i].getValue()%></td>
 						</tr> 
 					<% }
-					else if (name.equals("6")){ %>
+					else if (name.equals("5")){ %>
 						<tr>
 							<td>Lightbulb Sun, Porcupine Tree</td> <td><%=cookies[i].getValue()%></td>
 						</tr> 

@@ -28,8 +28,15 @@ public class RegistrationServlet extends HttpServlet {
 			session.setAttribute( "sname", sname );
 			session.setAttribute( "option", option );
 		  
-			response.setContentType( "text/html" );
-		  
+			 
+			Cookie killMyCookie[] = request.getCookies();
+			
+			for ( int i=0 ; i < ( killMyCookie.length ) ; i++){
+				if ( killMyCookie[i].getName().equals("1") || killMyCookie[i].getName().equals("2") || killMyCookie[i].getName().equals("3") || killMyCookie[i].getName().equals("4") || killMyCookie[i].getName().equals("5") || killMyCookie[i].getName().equals("6") ){
+					killMyCookie[i].setMaxAge(0);
+					response.addCookie(killMyCookie[i]);
+				}
+			}
 
 			if ( option.equals("books") ) {
 			
@@ -41,12 +48,6 @@ public class RegistrationServlet extends HttpServlet {
 				address="/WEB-INF/records.jsp";
 				
 			}
-			/*
-				output = response.getWriter();
-				output.println("<html><body>");
-			output.println("<p>name:"+fname);
-			output.println("</body></html>");
-			*/
 			RequestDispatcher dispatcher =
 			request.getRequestDispatcher(address);
 			dispatcher.forward(request, response);
