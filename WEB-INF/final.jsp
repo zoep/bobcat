@@ -5,6 +5,9 @@
 		<p> surname:<%=session.getAttribute("sname")%></p> 
 		<h1> Your order has been placed. </h1>
 		<table>
+			<tr>
+				<td>Book</td> <td>Quantity</td>
+			</tr>
 		<%
 			Cookie cookies[] = request.getCookies();
 			if ( cookies.length > 1 ) { 
@@ -23,6 +26,21 @@
 					else if (name.equals("3")){ %>
 						<tr>
 							<td>Signals and Systems, Alan V. Oppenheim</td> <td><%=cookies[i].getValue()%></td>
+						</tr> 
+					<% }
+					else if (name.equals("4")){ %>
+						<tr>
+							<td>The Piper at the Gates of Dawn, Pink Floyd</td> <td><%=cookies[i].getValue()%></td>
+						</tr> 
+					<% }
+					else if (name.equals("6")){ %>
+						<tr>
+							<td>Lightbulb Sun, Porcupine Tree</td> <td><%=cookies[i].getValue()%></td>
+						</tr> 
+					<% }
+					else if (name.equals("6")){ %>
+						<tr>
+							<td>Banana, The Velvet Underground</td> <td><%=cookies[i].getValue()%></td>
 						</tr> 
 					<% }
 				}

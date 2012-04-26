@@ -31,14 +31,16 @@
 			</tr>
 		</table>
 		<table>
-			<th> 
-				<td> You have selected: </td>
-			</th>
-			
 			<%
 				Cookie cookies[];
 				cookies = request.getCookies();
-				if ( cookies.length > 1 ) { 
+				if ( cookies.length > 1 ) { %>
+					<th> 
+						<td> You have selected: </td><td></td>
+					</th>
+					<tr>
+						<td>Book</td> <td>Quantity</td>
+					</tr> <%
 					for( int i = 0 ; i < ( cookies.length ) ; i++ ) {
 						String name = cookies[i].getName();
 						if (name.equals("1")){ %>

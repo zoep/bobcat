@@ -26,6 +26,7 @@ public class RegistrationServlet extends HttpServlet {
 		else { 
 			session.setAttribute( "fname", fname );
 			session.setAttribute( "sname", sname );
+			session.setAttribute( "option", option );
 		  
 			response.setContentType( "text/html" );
 		  
@@ -64,13 +65,22 @@ public class RegistrationServlet extends HttpServlet {
 
 				response.sendRedirect("http://localhost:8080/bobcat/");
 			}
-			else if ( ( session.getAttribute("fname")==null ) || ( session.getAttribute("sname")==null ) ){
+			else if ( ( session.getAttribute("fname")==null ) || ( session.getAttribute("sname")==null ) || ( session.getAttribute("option")==null ) ){
 
 				response.sendRedirect("http://localhost:8080/bobcat/");
 			}
 			else {
+				if ( session.getAttribute("option").equals("books") ) {
+			
+					address="/WEB-INF/books.jsp";
+				}
 
-				address="/WEB-INF/books.jsp";
+				else {
+				
+					address="/WEB-INF/records.jsp";
+				
+				}
+
 				RequestDispatcher dispatcher =
 					request.getRequestDispatcher(address);
 				dispatcher.forward(request, response);
