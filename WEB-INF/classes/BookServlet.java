@@ -72,7 +72,7 @@ public class BookServlet extends HttpServlet {
 				
 			
 
-				if ( request.getParameter("reset")!=null ){
+				else if ( request.getParameter("reset")!=null ){
 				
 					Cookie killMyCookie[] = request.getCookies();
 				
@@ -85,6 +85,11 @@ public class BookServlet extends HttpServlet {
 			
 					response.sendRedirect("http://localhost:8080/bobcat/Hipster");
 			
+				}
+
+				else {
+
+					response.sendRedirect("http://localhost:8080/bobcat/Hipster");
 				}
 
 				
